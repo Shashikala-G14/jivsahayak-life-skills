@@ -1,0 +1,410 @@
+import { UserPersona } from '@/context/AppContext';
+
+export interface Module {
+  id: string;
+  titleKey: string;
+  title: string;
+  description: string;
+  icon: string;
+  duration: string;
+  difficulty: 'beginner' | 'intermediate' | 'advanced';
+  category: 'banking' | 'lifeskills' | 'digital' | 'empowerment' | 'health' | 'stories';
+  personas: UserPersona[];
+  lessons: Lesson[];
+  points: number;
+  badge?: string;
+}
+
+export interface Lesson {
+  id: string;
+  title: string;
+  description: string;
+  type: 'video' | 'audio' | 'interactive' | 'story';
+  duration: string;
+  content: string;
+  steps?: string[];
+  points: number;
+}
+
+export const modules: Module[] = [
+  {
+    id: 'bank-account',
+    titleKey: 'openBankAccount',
+    title: 'How to Open a Bank Account',
+    description: 'Learn step-by-step how to open your first bank account',
+    icon: '🏦',
+    duration: '15 min',
+    difficulty: 'beginner',
+    category: 'banking',
+    personas: ['woman', 'man', 'elder'],
+    points: 100,
+    badge: 'banking-beginner',
+    lessons: [
+      {
+        id: 'bank-1',
+        title: 'Why You Need a Bank Account',
+        description: 'Understanding the importance of saving money safely',
+        type: 'video',
+        duration: '3 min',
+        content: 'A bank account keeps your money safe and helps you save for the future.',
+        points: 20,
+      },
+      {
+        id: 'bank-2',
+        title: 'Documents You Need',
+        description: 'Learn about Aadhaar, PAN and other required documents',
+        type: 'interactive',
+        duration: '5 min',
+        content: 'To open an account, you need: Aadhaar Card, PAN Card (optional), Passport photo, Address proof',
+        steps: [
+          'Gather your Aadhaar card',
+          'Get 2 passport-size photos',
+          'Fill the account opening form',
+          'Submit at nearest bank branch',
+        ],
+        points: 30,
+      },
+      {
+        id: 'bank-3',
+        title: 'Visiting the Bank',
+        description: 'What to expect when you visit the bank',
+        type: 'story',
+        duration: '4 min',
+        content: 'Meet Kamla who opened her first bank account...',
+        points: 25,
+      },
+      {
+        id: 'bank-4',
+        title: 'Your First Deposit',
+        description: 'How to deposit money in your account',
+        type: 'video',
+        duration: '3 min',
+        content: 'Learn how to fill a deposit slip and submit cash at the counter.',
+        points: 25,
+      },
+    ],
+  },
+  {
+    id: 'debit-card',
+    titleKey: 'useDebitCard',
+    title: 'How to Use a Debit Card',
+    description: 'Master using ATM and shopping with your debit card',
+    icon: '💳',
+    duration: '20 min',
+    difficulty: 'beginner',
+    category: 'banking',
+    personas: ['woman', 'man', 'elder'],
+    points: 120,
+    badge: 'card-master',
+    lessons: [
+      {
+        id: 'debit-1',
+        title: 'What is a Debit Card?',
+        description: 'Understanding your plastic money',
+        type: 'video',
+        duration: '3 min',
+        content: 'A debit card is connected to your bank account. When you use it, money is taken directly from your account.',
+        points: 20,
+      },
+      {
+        id: 'debit-2',
+        title: 'Using an ATM Machine',
+        description: 'Step-by-step ATM guide',
+        type: 'interactive',
+        duration: '7 min',
+        content: 'Learn to withdraw cash safely from any ATM',
+        steps: [
+          'Insert your card in the machine',
+          'Enter your 4-digit PIN',
+          'Select "Withdraw Cash"',
+          'Enter amount',
+          'Collect cash and card',
+          'Always take your receipt',
+        ],
+        points: 40,
+      },
+      {
+        id: 'debit-3',
+        title: 'Shopping with Your Card',
+        description: 'How to pay at shops using your card',
+        type: 'video',
+        duration: '5 min',
+        content: 'Learn to swipe or tap your card at stores',
+        points: 30,
+      },
+      {
+        id: 'debit-4',
+        title: 'Keeping Your Card Safe',
+        description: 'Important safety tips',
+        type: 'story',
+        duration: '5 min',
+        content: 'Never share your PIN, cover keypad while entering PIN, report lost card immediately',
+        points: 30,
+      },
+    ],
+  },
+  {
+    id: 'upi-payment',
+    titleKey: 'sendMoneyOnline',
+    title: 'Send Money Online (UPI)',
+    description: 'Learn to use PhonePe, Google Pay, Paytm',
+    icon: '📱',
+    duration: '25 min',
+    difficulty: 'beginner',
+    category: 'digital',
+    personas: ['woman', 'man', 'elder', 'child'],
+    points: 150,
+    badge: 'digital-savvy',
+    lessons: [
+      {
+        id: 'upi-1',
+        title: 'What is UPI?',
+        description: 'Understanding digital payments',
+        type: 'video',
+        duration: '4 min',
+        content: 'UPI lets you send money instantly using just a phone number or QR code.',
+        points: 25,
+      },
+      {
+        id: 'upi-2',
+        title: 'Setting Up UPI',
+        description: 'Create your UPI ID step by step',
+        type: 'interactive',
+        duration: '8 min',
+        content: 'Setup guide for Google Pay, PhonePe, or Paytm',
+        steps: [
+          'Download any UPI app',
+          'Enter your phone number',
+          'Link your bank account',
+          'Create your UPI PIN',
+          'Your UPI ID is ready!',
+        ],
+        points: 40,
+      },
+      {
+        id: 'upi-3',
+        title: 'Sending Money',
+        description: 'Transfer money to family and friends',
+        type: 'interactive',
+        duration: '6 min',
+        content: 'Learn to send money using phone number, UPI ID, or QR code',
+        steps: [
+          'Open your UPI app',
+          'Tap "Send Money"',
+          'Enter phone number or scan QR',
+          'Enter amount',
+          'Enter UPI PIN',
+          'Done! Money sent instantly',
+        ],
+        points: 40,
+      },
+      {
+        id: 'upi-4',
+        title: 'Staying Safe Online',
+        description: 'Avoid fraud and scams',
+        type: 'story',
+        duration: '7 min',
+        content: 'Learn about common scams and how to protect yourself',
+        points: 45,
+      },
+    ],
+  },
+  {
+    id: 'life-skills',
+    titleKey: 'basicLifeSkills',
+    title: 'Basic Life Skills',
+    description: 'Essential skills for daily life',
+    icon: '🌱',
+    duration: '30 min',
+    difficulty: 'beginner',
+    category: 'lifeskills',
+    personas: ['woman', 'man', 'child', 'elder'],
+    points: 180,
+    badge: 'life-skills-star',
+    lessons: [
+      {
+        id: 'life-1',
+        title: 'Managing Your Money',
+        description: 'Simple budgeting for families',
+        type: 'video',
+        duration: '6 min',
+        content: 'Learn to track income and expenses, and save for emergencies.',
+        points: 35,
+      },
+      {
+        id: 'life-2',
+        title: 'Healthy Eating on a Budget',
+        description: 'Nutritious meals for your family',
+        type: 'video',
+        duration: '8 min',
+        content: 'Cook healthy meals with local ingredients',
+        points: 40,
+      },
+      {
+        id: 'life-3',
+        title: 'First Aid Basics',
+        description: 'Handle minor injuries at home',
+        type: 'interactive',
+        duration: '10 min',
+        content: 'Learn basic first aid for cuts, burns, and fever',
+        steps: [
+          'Clean the wound with water',
+          'Apply antiseptic',
+          'Cover with bandage',
+          'Visit doctor if serious',
+        ],
+        points: 50,
+      },
+      {
+        id: 'life-4',
+        title: 'Time Management',
+        description: 'Plan your day effectively',
+        type: 'story',
+        duration: '6 min',
+        content: 'Story of how Sunita manages her household and work',
+        points: 55,
+      },
+    ],
+  },
+  {
+    id: 'women-empowerment',
+    titleKey: 'womenEmpowerment',
+    title: 'Women Empowerment',
+    description: 'Skills and knowledge for self-reliance',
+    icon: '💪',
+    duration: '35 min',
+    difficulty: 'beginner',
+    category: 'empowerment',
+    personas: ['woman'],
+    points: 200,
+    badge: 'empowered-woman',
+    lessons: [
+      {
+        id: 'emp-1',
+        title: 'Know Your Rights',
+        description: 'Legal rights every woman should know',
+        type: 'video',
+        duration: '8 min',
+        content: 'Learn about property rights, workplace rights, and more',
+        points: 45,
+      },
+      {
+        id: 'emp-2',
+        title: 'Starting a Small Business',
+        description: 'From idea to income',
+        type: 'interactive',
+        duration: '12 min',
+        content: 'Step-by-step guide to start your own small business',
+        steps: [
+          'Identify your skills',
+          'Research the market',
+          'Plan your budget',
+          'Register if needed',
+          'Start small, grow steady',
+        ],
+        points: 60,
+      },
+      {
+        id: 'emp-3',
+        title: 'Self-Help Groups (SHGs)',
+        description: 'Power of collective saving',
+        type: 'video',
+        duration: '7 min',
+        content: 'How to join or start a self-help group in your village',
+        points: 45,
+      },
+      {
+        id: 'emp-4',
+        title: 'Government Schemes for Women',
+        description: 'Benefits you can claim',
+        type: 'interactive',
+        duration: '8 min',
+        content: 'Learn about Ujjwala, Sukanya Samriddhi, Mahila Shakti Kendra',
+        points: 50,
+      },
+    ],
+  },
+  {
+    id: 'mindset-stories',
+    titleKey: 'mindsetStories',
+    title: 'Mindset Changing Stories',
+    description: 'Inspiring stories to shift perspective',
+    icon: '📖',
+    duration: '20 min',
+    difficulty: 'beginner',
+    category: 'stories',
+    personas: ['woman', 'man', 'child', 'elder'],
+    points: 100,
+    badge: 'story-lover',
+    lessons: [
+      {
+        id: 'story-1',
+        title: 'The Power of Education',
+        description: "Geeta's journey from fields to classroom",
+        type: 'story',
+        duration: '5 min',
+        content: 'An inspiring story about never giving up on learning',
+        points: 25,
+      },
+      {
+        id: 'story-2',
+        title: 'Breaking Barriers',
+        description: 'How Raju challenged stereotypes',
+        type: 'story',
+        duration: '5 min',
+        content: 'A story about questioning harmful traditions',
+        points: 25,
+      },
+      {
+        id: 'story-3',
+        title: 'Together We Rise',
+        description: 'Village women transform their community',
+        type: 'story',
+        duration: '5 min',
+        content: 'The power of community and collective action',
+        points: 25,
+      },
+      {
+        id: 'story-4',
+        title: 'The Value of Daughters',
+        description: 'Changing hearts, one family at a time',
+        type: 'story',
+        duration: '5 min',
+        content: 'A touching story about gender equality',
+        points: 25,
+      },
+    ],
+  },
+];
+
+export const badges = [
+  { id: 'first-step', name: 'First Step', icon: '🎯', description: 'Complete your first lesson', tier: 'bronze' },
+  { id: 'banking-beginner', name: 'Banking Beginner', icon: '🏦', description: 'Complete banking basics', tier: 'silver' },
+  { id: 'card-master', name: 'Card Master', icon: '💳', description: 'Master debit card usage', tier: 'silver' },
+  { id: 'digital-savvy', name: 'Digital Savvy', icon: '📱', description: 'Learn digital payments', tier: 'gold' },
+  { id: 'life-skills-star', name: 'Life Skills Star', icon: '⭐', description: 'Master basic life skills', tier: 'gold' },
+  { id: 'empowered-woman', name: 'Empowered Woman', icon: '💪', description: 'Complete empowerment module', tier: 'gold' },
+  { id: 'story-lover', name: 'Story Lover', icon: '📖', description: 'Read all stories', tier: 'bronze' },
+  { id: 'streak-7', name: 'Week Warrior', icon: '🔥', description: '7-day learning streak', tier: 'silver' },
+  { id: 'streak-30', name: 'Monthly Master', icon: '🏆', description: '30-day learning streak', tier: 'platinum' },
+  { id: 'helper', name: 'Community Helper', icon: '🤝', description: 'Help 5 others learn', tier: 'gold' },
+];
+
+export const dailyChallenges = [
+  { id: 'dc-1', title: 'Complete 1 lesson', points: 20, icon: '📚' },
+  { id: 'dc-2', title: 'Ask Sahayak a question', points: 15, icon: '🗣️' },
+  { id: 'dc-3', title: 'Share with a friend', points: 25, icon: '👥' },
+  { id: 'dc-4', title: 'Watch a mindset story', points: 20, icon: '📖' },
+  { id: 'dc-5', title: 'Practice an interactive lesson', points: 30, icon: '🎮' },
+];
+
+export const leaderboardData = [
+  { rank: 1, name: 'Kamla Devi', village: 'Sultanpur', points: 2450, avatar: '👩' },
+  { rank: 2, name: 'Ramesh Kumar', village: 'Bhopal', points: 2280, avatar: '👨' },
+  { rank: 3, name: 'Sunita Sharma', village: 'Jaipur', points: 2150, avatar: '👩' },
+  { rank: 4, name: 'Mohan Singh', village: 'Lucknow', points: 1980, avatar: '👨' },
+  { rank: 5, name: 'Geeta Rani', village: 'Patna', points: 1820, avatar: '👩' },
+  { rank: 6, name: 'Anil Yadav', village: 'Kanpur', points: 1750, avatar: '👨' },
+  { rank: 7, name: 'Priya Kumari', village: 'Varanasi', points: 1680, avatar: '👩' },
+  { rank: 8, name: 'Rajesh Verma', village: 'Agra', points: 1520, avatar: '👨' },
+];
